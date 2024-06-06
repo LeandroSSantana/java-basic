@@ -4,7 +4,23 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ProcessoSeletivo {
     public static void main(String[] args) {
-        selecaoCandidatos();
+        imprimirSelecionados();
+    }
+
+    static void imprimirSelecionados() {
+        String[] candidatos = { "Ana", "Bruno", "Carlos", "Daniela", "Eduardo" };
+        System.out.println("Imprimindo lista de candidatos informando o indice do elemento");
+
+        for (int indice = 0; indice < candidatos.length; indice++) {
+            System.out.println("O candidato de n° " + (indice + 1) + " é o " + candidatos[indice]);
+        }
+
+        System.out.println("Forma abreviada de interação for each");
+
+        for (String candidato : candidatos) {
+            System.out.println("O candidato de selecionado  foi " + candidato);
+        }
+
     }
 
     static void selecaoCandidatos() {
@@ -14,12 +30,13 @@ public class ProcessoSeletivo {
         int candidatosAtuais = 0;
         double salarioBase = 2000.0;
 
-        while (candidatosSelecionados < 5) {
+        while (candidatosSelecionados < 5 && candidatosAtuais < candidatos.length) {
             String candidato = candidatos[candidatosAtuais];
             double salarioPretendido = valorPretendido();
 
-            System.out.println("O candidato " + candidato + " solicitou este valor de salario: " + String.format("%.2f", salarioPretendido));
-            
+            System.out.println("O candidato " + candidato + " solicitou este valor de salario: "
+                    + String.format("%.2f", salarioPretendido));
+
             if (salarioBase >= salarioPretendido) {
                 System.out.println("O candidato " + candidato + " foi selecionado para a vaga.");
                 candidatosSelecionados++;
